@@ -2,6 +2,7 @@ import requests
 import pandas
 import streamlit
 import snowflake.connector
+import random
 
 
 streamlit.title("My Parents New Healthy Diner")
@@ -48,6 +49,6 @@ my_data_rows = my_cur.fetchall()
 streamlit.header("The fruit load list contains:")
 streamlit.dataframe(my_data_rows)
 
-fruit_added = streamlit.text_input('What fruit would you like to add?','Kiwi')
-streamlit.write(f'The user entered {fruit_choice}')
+fruit_added = streamlit.text_input('What fruit would you like to add?', random.choice(my_data_rows.values))
+streamlit.write(f'The user entered {fruit_added}')
 
