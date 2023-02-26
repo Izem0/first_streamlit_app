@@ -28,6 +28,12 @@ streamlit.dataframe(fruits_to_show)
 
 
 # ========= Fruityvice api response ============= #
+def get_fruity_vice_data(fruit_name):
+  fruityvice_response = requests.get(f"https://fruityvice.com/api/fruit/{fruit_name}")
+  fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
+  return fruityvice_normalized
+
+
 streamlit.header('Fruityvice Fruit Advice!')
 
 try:
@@ -36,10 +42,9 @@ try:
     streamlit.error('Please select a fruit to get information.')
   else:
     # get fruityvice data
-    fruityvice_response = requests.get(f"https://fruityvice.com/api/fruit/{fruit_choice}")
-    fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
+    fruit_data = get_fruity_vice_data(fruit_choice)
     # show data
-    streamlit.dataframe(fruityvice_normalized)
+    streamlit.dataframe(fruit_data)
 
 except URLError as e:
   streamlit.error()
