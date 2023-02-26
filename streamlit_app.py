@@ -45,14 +45,14 @@ try:
     fruit_data = get_fruity_vice_data(fruit_choice)
     # show data
     streamlit.dataframe(fruit_data)
+    # small msg
+    streamlit.write('The user entered ', fruit_choice)
+
+
 
 except URLError as e:
   streamlit.error()
  
-# user input
-
-streamlit.write('The user entered ', fruit_choice)
-
 
 
 # ========= snowflake connector ============= #
