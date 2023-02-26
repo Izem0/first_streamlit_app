@@ -37,7 +37,7 @@ def get_fruity_vice_data(fruit_name):
 streamlit.header('Fruityvice Fruit Advice!')
 
 try:
-  fruit_choice = streamlit.text_input('What fruit would you like information about?','Kiwi')
+  fruit_choice = streamlit.text_input('What fruit would you like information about?')
   if not fruit_choice:
     streamlit.error('Please select a fruit to get information.')
   else:
